@@ -15,6 +15,8 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-select": "^5.2.2",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
   },
@@ -23,13 +25,21 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint --ext .tsx --ext .ts src/"
+    "lint": "eslint --ext .jsx --ext .js src/"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2020,
+      "sourceType": "module"
+    },
+    "env": {
+      "es2017": true,
+      "browser": true
+    },
     "extends": [
       "react-app",
       "react-app/jest",
-      "htmlacademy/react-typescript"
+      "htmlacademy/react"
     ]
   },
   "browserslist": {

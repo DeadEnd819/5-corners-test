@@ -1,7 +1,8 @@
+import React from 'react';
 import Select from 'react-select';
-import {useField, FieldProps} from "formik";
+import {useField} from 'formik';
 
-function CustomSelect(props): JSX.Element {
+function CustomSelect(props) {
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
 
@@ -10,10 +11,9 @@ function CustomSelect(props): JSX.Element {
       <Select
         id={props.id}
         name={field.name}
-        defaultValue={''}
-        onChange={(option: any): void => {
-          console.log(option)
-          setValue(option.value)
+        defaultValue={null}
+        onChange={(option) => {
+          setValue(option.value);
         }}
         options={props.options}
       />

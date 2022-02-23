@@ -1,3 +1,4 @@
+import React from 'react';
 import Main from '../main/main';
 import Sprite from '../sprite/sprite';
 import Header from '../header/header';

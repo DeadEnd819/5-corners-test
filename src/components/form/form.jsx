@@ -1,6 +1,7 @@
-import {Formik, Form as FormikForm, FormikHelpers} from "formik";
+import React from 'react';
+import {Formik, Form as FormikForm} from 'formik';
 import Input from '../input/input';
-import CustomSelect from "../custom-select/custom-select";
+import CustomSelect from '../custom-select/custom-select';
 
 const options = [
   {value: 'no', label: 'без упаковки'},
@@ -38,6 +39,7 @@ const formInputs = [
     id: 'package',
     label: 'Тип Упаковки',
     name: 'package',
+    options
   },
   {
     type: 'text',
@@ -64,7 +66,9 @@ function Form() {
           {setSubmitting}
         ) => {
           setTimeout(() => {
-            console.log()
+            /*eslint-disable-next-line*/
+            console.log();
+            /*eslint-disable-next-line*/
             alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 500);

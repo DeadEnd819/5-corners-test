@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Sprite() {
   return (
     <div className="visually-hidden">

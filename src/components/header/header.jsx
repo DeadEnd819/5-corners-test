@@ -1,3 +1,5 @@
+import React from 'react';
+
 function Header () {
   return (
     <header className="header">
@@ -56,17 +58,29 @@ function Header () {
           </button>
           <div className="main-nav__wrapper">
             <ul className="main-nav__list">
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 1</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 1</a>
               </li>
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 2</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 2</a>
               </li>
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 3</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 3</a>
               </li>
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 4</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 4</a>
               </li>
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 5</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 5</a>
               </li>
-              <li className="main-nav__item"><a className="main-nav__link" href="#">Страница 6</a>
+              <li className="main-nav__item">
+                {/*eslint-disable-next-line*/}
+                <a className="main-nav__link" href="#">Страница 6</a>
               </li>
             </ul>
           </div>

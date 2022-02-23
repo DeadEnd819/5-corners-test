@@ -1,3 +1,4 @@
+import React from 'react';
 import Breadcrumbs from '../breadcrumbs/breadcrumbs';
 import Basket from '../basket/basket';
 
