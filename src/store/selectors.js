@@ -1,3 +1,4 @@
-export const getDate = (state) => {
-  return state.DATA.data;
-};
+export const getDate = (state) => state.DATA.data;
+export const getCoords = (state) => state.MAP.coords;
+export const getMarkerFlag = (state) => state.MAP.isMarkerShown;
+export const getForm = (state) => state.FORM;

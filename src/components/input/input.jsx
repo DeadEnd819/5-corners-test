@@ -1,14 +1,27 @@
 import React from 'react';
+import {getForm} from '../../store/selectors';
+import {connect} from 'react-redux';
 
-function Input(props) {
+function Input({fields, id, type, name, label, onChange, onBlur}) {
   return (
     <div className="input">
-      <input type={props.type} id={props.id} name={props.name} />
-      <label htmlFor={props.id}>
-        <span className="input__label">{props.label}</span>
+      <input
+        type={type}
+        id={id}
+        name={name}
+        value={fields[name]}
+        onChange={(evt) => onChange(evt.target)}
+        onBlur={(evt) => onBlur(evt.target)}
+      />
+      <label htmlFor={id}>
+        <span className="input__label">{label}</span>
       </label>
     </div>
   );
 }
 
-export default Input;
+const mapStateToProps = (store) => ({
+  fields: getForm(store),
+});
+
+export default connect(mapStateToProps)(Input);

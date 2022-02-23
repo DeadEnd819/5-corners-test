@@ -1,27 +1,21 @@
-import React, {Component, useState} from 'react';
+import React, {useEffect} from 'react';
 import GoogleMapReact from 'google-map-react';
-import {extend} from '../../utils';
+import {connect} from 'react-redux';
+import {fetchAddress} from '../../store/api-actions';
+import {getCoords, getMarkerFlag} from '../../store/selectors';
+import {changeMarkerFlag, setCoords} from '../../store/action';
+import {KEY, defaultMapOption} from '../../const';
 
-const defaultOption = {
-  center: {
-    lat: 59.95,
-    lng: 30.33
-  },
-  zoom: 11,
-  draggable: true,
-  lat: 59.95,
-  lng: 30.33
-};
-
-function AnyReactComponent({text}) {
+/*eslint-disable-next-line*/
+function Marker({text}) {
   return (
     <div style={{
       position: 'absolute',
-      left: '-10px',
-      top: '-10px',
+      left: '-16px',
+      top: '-16px',
       borderRadius: '50%',
-      width: '36px',
-      height: '36px',
+      width: '32px',
+      height: '32px',
       backgroundColor: 'red',
       display: 'flex',
       alignItems: 'center',
@@ -35,120 +29,59 @@ function AnyReactComponent({text}) {
   );
 }
 
-function Map() {
-  const [state, setState] = useState(defaultOption);
-  console.log(state)
-  const onCircleInteraction = (childKey, childProps, mouse) => {
-    setState({
-      draggable: false,
-      lat: mouse.lat,
-      lng: mouse.lng
+
+function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
+  useEffect(() => {
+    if (coords.lat === null || coords.lng === null) {
+      return;
+    }
+
+    getAddress({lat: coords.lat, lng: coords.lng});
+
+    if (isMarkerShown) {
+      return;
+    }
+
+    setMarkerShown(true);
+  }, [coords.lat, coords.lng]);
+
+  const handleMapClick = (evt) => {
+    setCoords({
+      lat: evt.lat,
+      lng: evt.lng
     });
-    /*eslint-disable-next-line*/
-    console.log('onCircleInteraction called with', childKey, childProps, mouse);
-  };
-
-  const onCircleInteraction3 = (childKey, childProps, mouse) => {
-    setState(extend(state,{draggable: true}));
-    /*eslint-disable-next-line*/
-    console.log('onCircleInteraction called with', childKey, childProps, mouse);
-  };
-
-  const onChange = ({center, zoom}) => {
-    setState(extend(state,{
-      center: center,
-      zoom: zoom,
-    }));
   };
 
   return (
-    <div style={{ height: '50vh', width: '100%'}}>
+    <div style={{height: '50vh', width: '100%'}}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyAHZ5949QgmBK94SOpqeBZPQ3YU8pJ643E'}}
-        defaultCenter={state.center}
-        defaultZoom={state.zoom}
-
-        onChange={onChange}
-        onChildMouseDown={onCircleInteraction}
-        onChildMouseUp={onCircleInteraction3}
-        onChildMouseMove={onCircleInteraction}
-        /*eslint-disable-next-line*/
-        onChildClick={() => console.log('child click')}
-        /*eslint-disable-next-line*/
-        onClick={() => console.log('mapClick')}
+        bootstrapURLKeys={{key: KEY}}
+        defaultCenter={defaultMapOption.center}
+        defaultZoom={defaultMapOption.zoom}
+        center={coords}
+        onClick={handleMapClick}
       >
-        <AnyReactComponent
-          lat={state.lat}
-          lng={state.lng}
-          text="?"
-        />
+        {isMarkerShown && <Marker lat={coords.lat} lng={coords.lng} text/>}
       </GoogleMapReact>
     </div>
   );
 }
 
-// class TestMap extends Component {
-//   static defaultProps = {
-//     center: {
-//       lat: 59.95,
-//       lng: 30.33
-//     },
-//     zoom: 11,
-//     draggable: true,
-//     lat: 59.95,
-//     lng: 30.33
-//   };
-//
-//   onCircleInteraction(childKey, childProps, mouse) {
-//     this.setState({
-//       draggable: false,
-//       lat: mouse.lat,
-//       lng: mouse.lng
-//     });
-//     /*eslint-disable-next-line*/
-//     console.log('onCircleInteraction called with', childKey, childProps, mouse);
-//   }
-//
-//   onCircleInteraction3(childKey, childProps, mouse) {
-//     this.setState({draggable: true});
-//     /*eslint-disable-next-line*/
-//     console.log('onCircleInteraction called with', childKey, childProps, mouse);
-//   }
-//
-//   _onChange = ({center, zoom}) => {
-//     this.setState({
-//       center: center,
-//       zoom: zoom,
-//     });
-//   };
-//
-//   render() {
-//     return (
-//       <div style={{ height: '50vh', width: '100%'}}>
-//         <GoogleMapReact
-//           bootstrapURLKeys={{ key: 'AIzaSyAHZ5949QgmBK94SOpqeBZPQ3YU8pJ643E'}}
-//           defaultCenter={this.props.center}
-//           defaultZoom={this.props.zoom}
-//
-//           onChange={this._onChange}
-//           onChildMouseDown={this.onCircleInteraction}
-//           onChildMouseUp={this.onCircleInteraction3}
-//           onChildMouseMove={this.onCircleInteraction}
-//           /*eslint-disable-next-line*/
-//           onChildClick={() => console.log('child click')}
-//           /*eslint-disable-next-line*/
-//           onClick={() => console.log('mapClick')}
-//         >
-//           <AnyReactComponent
-//             lat={this.props.lat}
-//             lng={this.props.lng}
-//             draggable
-//             text="My Marker"
-//           />
-//         </GoogleMapReact>
-//       </div>
-//     );
-//   }
-// }
+const mapStateToProps = (store) => ({
+  isMarkerShown: getMarkerFlag(store),
+  coords: getCoords(store),
+});
 
-export default Map;
+const mapDispatchToProps = (dispatch) => ({
+  getAddress(date) {
+    dispatch(fetchAddress(date));
+  },
+  setMarkerShown(flag) {
+    dispatch(changeMarkerFlag(flag));
+  },
+  setCoords(coords) {
+    dispatch(setCoords(coords));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

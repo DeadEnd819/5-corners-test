@@ -2,7 +2,8 @@ import React from 'react';
 import Select from 'react-select';
 import {useField} from 'formik';
 
-function CustomSelect(props) {
+function CustomSelect({onChange, ...props}) {
+  /*eslint-disable-next-line*/
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
 
@@ -14,6 +15,10 @@ function CustomSelect(props) {
         defaultValue={null}
         onChange={(option) => {
           setValue(option.value);
+          onChange({
+            name: field.name,
+            value: option.value
+          });
         }}
         options={props.options}
       />

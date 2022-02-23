@@ -2,74 +2,46 @@ import React from 'react';
 import {Formik, Form as FormikForm} from 'formik';
 import Input from '../input/input';
 import CustomSelect from '../custom-select/custom-select';
+import {fetchCoords} from '../../store/api-actions';
+import {connect} from 'react-redux';
+import {getForm} from '../../store/selectors';
+import {changeFormData, changeMarkerFlag} from '../../store/action';
+import {formInputs} from '../../const';
 
-const options = [
-  {value: 'no', label: 'без упаковки'},
-  {value: 'standard', label: 'стандартная'},
-  {value: 'gift', label: 'подарочная'},
-];
+function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
+  const handleInputChange = ({name, value}) => {
+    setForm({[name]: value});
 
-const formInputs = [
-  {
-    type: 'text',
-    id: 'address',
-    label: 'Адрес',
-    name: 'address',
-  },
-  {
-    type: 'text',
-    id: 'name',
-    label: 'Ваше Имя',
-    name: 'name',
-  },
-  {
-    type: 'number',
-    id: 'phone',
-    label: 'Ваш Телефон',
-    name: 'phone',
-  },
-  {
-    type: 'email',
-    id: 'email',
-    label: 'Ваш Email',
-    name: 'email',
-  },
-  {
-    type: 'select',
-    id: 'package',
-    label: 'Тип Упаковки',
-    name: 'package',
-    options
-  },
-  {
-    type: 'text',
-    id: 'comment',
-    label: 'Введите комментарий',
-    name: 'comment',
-  },
-];
+    if (name === 'address' && !value) {
+      setMarkerFlag(false);
+    }
+  };
 
-function Form() {
+  const handleAddressBlur = ({name, value}) => {
+    if (name === 'address') {
+      if (!value) {
+        setMarkerFlag(false);
+        return;
+      }
+
+      fetchCoords(fields[name]);
+    }
+  };
+
   return (
     <div className="form">
       <Formik
-        initialValues={{
-          address: '',
-          name: '',
-          phone: '',
-          email: '',
-          package: '',
-          comment: '',
-        }}
+        initialValues={fields}
         onSubmit={(
           values,
           {setSubmitting}
         ) => {
           setTimeout(() => {
+            // const ValuesData = JSON.stringify(values, null, 2);
             /*eslint-disable-next-line*/
-            console.log();
+            console.log(JSON.stringify(fields, null, 2));
             /*eslint-disable-next-line*/
-            alert(JSON.stringify(values, null, 2));
+            alert(JSON.stringify(fields, null, 2));
             setSubmitting(false);
           }, 500);
         }}
@@ -84,6 +56,8 @@ function Form() {
                 label={input.label}
                 name={input.name}
                 options={input.options}
+                onChange={handleInputChange}
+                onBlur={handleAddressBlur}
               />
               :
               <CustomSelect
@@ -92,7 +66,8 @@ function Form() {
                 id={input.id}
                 label={input.label}
                 name={input.name}
-                options={options}
+                options={input.options}
+                onChange={handleInputChange}
               />
           ))}
           <button type="submit">Submit</button>
@@ -102,4 +77,23 @@ function Form() {
   );
 }
 
-export default Form;
+const mapStateToProps = (store) => ({
+  fields: getForm(store),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getAddress(address) {
+    dispatch(fetchCoords(address));
+  },
+  setForm(data) {
+    dispatch(changeFormData(data));
+  },
+  setMarkerFlag(flag) {
+    dispatch(changeMarkerFlag(flag));
+  },
+  fetchCoords(address) {
+    dispatch(fetchCoords(address));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form);
