@@ -1,0 +1,77 @@
+.input,
+.textarea {
+  position: relative;
+
+  padding: 0;
+
+  label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+
+    display: inline-block;
+    vertical-align: middle;
+
+    width: 100%;
+
+    transform: translate3d(0, -50%, 0);
+  }
+
+  input,
+  textarea {
+    flex-grow: 1;
+    min-height: 40px;
+    padding: 10px 10px 10px 0;
+    border: none;
+    border-bottom: 1px solid $color-nobel;
+    outline: none;
+
+    transition: border $trans-default;
+
+    &:hover {
+      //border: 2px solid rgba($color-default-black, 0.5);
+    }
+
+    &:focus {
+      //border: 2px solid rgba($color-default-black, 0.8);
+    }
+  }
+
+  &__error {
+    position: absolute;
+    right: 0;
+    bottom: -5px;
+
+    color: $color-torch-red;
+
+    opacity: 0;
+
+    transition: opacity $trans-default;
+  }
+
+  &.is-invalid {
+    input {
+      border: 2px solid $color-torch-red;
+
+      &:focus,
+      &:hover {
+        border: 2px solid rgba($color-torch-red, 0.5);
+      }
+    }
+
+    .input__error {
+      opacity: 1;
+    }
+  }
+
+  /*&.is-valid {
+    input {
+      border: 2px solid $color-malachite;
+
+      &:focus,
+      &:hover {
+        border: 2px solid rgba($color-malachite, 0.5);
+      }
+    }
+  }*/
+}

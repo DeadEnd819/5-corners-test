@@ -1,0 +1,38 @@
+.basket {
+
+}
+
+.basket__wrapper {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.basket__title,
+.basket__text {
+  margin: 0;
+  padding: 0;
+}
+
+.basket__title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1.15;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+.basket__link {
+  margin-left: 5px;
+  color: $color-nobel;
+  text-decoration-line: underline;
+  transition: color $trans-default;
+
+  @media (hover: hover), screen and (min-width: 0\0) {
+    &:hover,
+    &:focus {
+      color: $color-default-black;
+    }
+  }
+}
