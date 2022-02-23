@@ -56,9 +56,8 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
     <div style={{height: '50vh', width: '100%'}}>
       <GoogleMapReact
         bootstrapURLKeys={{key: KEY}}
-        defaultCenter={defaultMapOption.center}
-        defaultZoom={defaultMapOption.zoom}
-        center={coords}
+        zoom={defaultMapOption.zoom}
+        center={(coords.lat && coords.lng) ? coords : defaultMapOption.center}
         onClick={handleMapClick}
       >
         {isMarkerShown && <Marker lat={coords.lat} lng={coords.lng} text/>}
