@@ -7,7 +7,7 @@ export const fetchData = () => (dispatch, _getState, api) => (
       dispatch(setData(JSON.parse(data)));
     })
     .catch(() => {
-      throw Error('Ошибка загрузки данных');
+      throw Error('Ошибка загрузки данных корзины');
     })
 );
 

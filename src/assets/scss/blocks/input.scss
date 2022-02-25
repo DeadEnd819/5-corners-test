@@ -38,15 +38,15 @@
   }
 
   &__error {
-    position: absolute;
-    right: 0;
-    bottom: -5px;
+    //position: absolute;
+    //right: 0;
+    //bottom: -5px;
 
     color: $color-torch-red;
 
-    opacity: 0;
+    //opacity: 0;
 
-    transition: opacity $trans-default;
+    //transition: opacity $trans-default;
   }
 
   &.is-invalid {
@@ -74,4 +74,13 @@
       }
     }
   }*/
+}
+
+.input__error,
+.input__label {
+  transition: opacity $trans-default;
+}
+
+.input__error + .input__label {
+  opacity: 0;
 }

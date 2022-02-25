@@ -18,41 +18,41 @@ export const formInputs = [
     label: 'Адрес',
     name: 'address',
   },
-  {
-    type: 'text',
-    id: 'name',
-    label: 'Ваше Имя',
-    name: 'name',
-  },
-  {
-    type: 'number',
-    id: 'phone',
-    label: 'Ваш Телефон',
-    name: 'phone',
-  },
-  {
-    type: 'email',
-    id: 'email',
-    label: 'Ваш Email',
-    name: 'email',
-  },
-  {
-    type: 'select',
-    id: 'package',
-    label: 'Тип Упаковки',
-    name: 'package',
-    options: [
-      {value: 'no', label: 'без упаковки'},
-      {value: 'standard', label: 'стандартная'},
-      {value: 'gift', label: 'подарочная'},
-    ],
-  },
-  {
-    type: 'text',
-    id: 'comment',
-    label: 'Введите комментарий',
-    name: 'comment',
-  },
+  // {
+  //   type: 'text',
+  //   id: 'name',
+  //   label: 'Ваше Имя',
+  //   name: 'name',
+  // },
+  // {
+  //   type: 'text',
+  //   id: 'phone',
+  //   label: 'Ваш Телефон',
+  //   name: 'phone',
+  // },
+  // {
+  //   type: 'email',
+  //   id: 'email',
+  //   label: 'Ваш Email',
+  //   name: 'email',
+  // },
+  // {
+  //   type: 'select',
+  //   id: 'package',
+  //   label: 'Тип Упаковки',
+  //   name: 'package',
+  //   options: [
+  //     {value: 'no', label: 'без упаковки'},
+  //     {value: 'standard', label: 'стандартная'},
+  //     {value: 'gift', label: 'подарочная'},
+  //   ],
+  // },
+  // {
+  //   type: 'text',
+  //   id: 'comment',
+  //   label: 'Введите комментарий',
+  //   name: 'comment',
+  // },
 ];
 
 export const defaultMapOption = {

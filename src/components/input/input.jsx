@@ -1,19 +1,54 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {getForm} from '../../store/selectors';
 import {connect} from 'react-redux';
+import {Field, useField, ErrorMessage} from 'formik';
+import MaskedInput from 'react-text-mask';
 
-function Input({fields, id, type, name, label, onChange, onBlur}) {
+const phoneNumberMask = ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+
+function Input({fields, id, type, label, onChange, onBlur, ...props}) {
+  /*eslint-disable-next-line*/
+  const [field, meta, helpers] = useField(props);
+  const {setValue} = helpers;
+
+  const value = fields[field.name];
+  const error = meta.error;
+
+  useEffect(() => {
+    setValue(value);
+  }, [value]);
+
   return (
-    <div className="input">
-      <input
-        type={type}
-        id={id}
-        name={name}
-        value={fields[name]}
-        onChange={(evt) => onChange(evt.target)}
-        onBlur={(evt) => onBlur(evt.target)}
-      />
+    <div className={`input${error ? ' is-invalid' : ''}`}>
+      {field.name === 'phone' ?
+        <MaskedInput
+          mask={phoneNumberMask}
+          type={type}
+          id={id}
+          name={field.name}
+          value={value}
+          onChange={(evt) => {
+            onChange(evt.target);
+          }}
+          onBlur={(evt) => onBlur(evt.target)}
+        />
+        :
+        <Field
+          type={type}
+          id={id}
+          name={field.name}
+          value={value}
+          onChange={(evt) => {
+            onChange(evt.target);
+          }}
+          onBlur={(evt) => onBlur(evt.target)}
+        />}
       <label htmlFor={id}>
+        <ErrorMessage
+          name={id}
+          component="span"
+          className="input__error"
+        />
         <span className="input__label">{label}</span>
       </label>
     </div>
