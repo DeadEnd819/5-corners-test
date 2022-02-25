@@ -15,11 +15,11 @@ function Basket() {
             {/*eslint-disable-next-line*/}
             <a className="basket__link" href="#" aria-label="Перейти к странице авторизации">Войти</a>
           </div>
-          <Map />
+
           <Form />
         </div>
         <div className="basket__col">
-
+          <Map />
         </div>
       </div>
     </section>

@@ -13,13 +13,14 @@ function Input({fields, id, type, label, onChange, onBlur, ...props}) {
 
   const value = fields[field.name];
   const error = meta.error;
+  const isFilled = !!value;
 
   useEffect(() => {
     setValue(value);
   }, [value]);
 
   return (
-    <div className={`input${error ? ' is-invalid' : ''}`}>
+    <div className={`input${error ? ' s-invalid' : ''}${isFilled ? ' is-filled' : ''}`}>
       {field.name === 'phone' ?
         <MaskedInput
           mask={phoneNumberMask}

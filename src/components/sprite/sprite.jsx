@@ -5,7 +5,7 @@ function Sprite() {
     <div className="visually-hidden">
       <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
         <symbol id="icon-arrow" viewBox="0 0 24 24">
-          <path stroke="#000" d="M18.67 8 12 14.67 5.33 8"/>
+          <path stroke="currentColor" d="M18.67 8 12 14.67 5.33 8"/>
         </symbol>
         <symbol id="icon-basket" viewBox="0 0 25 27">
           <path

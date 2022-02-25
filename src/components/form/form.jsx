@@ -11,11 +11,11 @@ import {formInputs} from '../../const';
 
 const schema = Yup.object().shape({
   address: Yup.string().required('Ошибка ввода'),
-  // name: Yup.string().required('Ошибка ввода'),
-  // phone: Yup.string().required('Ошибка ввода'),
-  // email: Yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
-  // package: Yup.string().required('Ошибка ввода'),
-  // comment: Yup.string(),
+  name: Yup.string().required('Ошибка ввода'),
+  phone: Yup.string().required('Ошибка ввода'),
+  email: Yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
+  package: Yup.string().required('Ошибка ввода'),
+  comment: Yup.string(),
 });
 
 function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
@@ -59,29 +59,33 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
       >
         {({ isSubmitting }) => (
           <FormikForm>
-            {formInputs.map((input) => (
-              !input.options ?
-                <Input
-                  key={input.name + input.id}
-                  type={input.type}
-                  id={input.id}
-                  label={input.label}
-                  name={input.name}
-                  options={input.options}
-                  onChange={handleInputChange}
-                  onBlur={handleAddressBlur}
-                />
-                :
-                <CustomSelect
-                  key={input.name + input.id}
-                  type={input.type}
-                  id={input.id}
-                  label={input.label}
-                  name={input.name}
-                  options={input.options}
-                  onChange={handleInputChange}
-                />
-            ))}
+
+            <div className="form__grid">
+              {formInputs.map((input) => (
+                !input.options ?
+                  <Input
+                    key={input.name + input.id}
+                    type={input.type}
+                    id={input.id}
+                    label={input.label}
+                    name={input.name}
+                    options={input.options}
+                    onChange={handleInputChange}
+                    onBlur={handleAddressBlur}
+                  />
+                  :
+                  <CustomSelect
+                    key={input.name + input.id}
+                    type={input.type}
+                    id={input.id}
+                    label={input.label}
+                    name={input.name}
+                    options={input.options}
+                    onChange={handleInputChange}
+                  />
+              ))}
+            </div>
+
             <button type="submit">Submit</button>
           </FormikForm>
         )}

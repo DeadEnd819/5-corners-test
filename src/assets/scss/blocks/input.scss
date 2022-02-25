@@ -2,7 +2,15 @@
 .textarea {
   position: relative;
 
+  width: 100%;
+  margin-bottom: 20px;
   padding: 0;
+
+  border-bottom: 1px solid $color-nobel;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   label {
     position: absolute;
@@ -11,22 +19,28 @@
 
     display: inline-block;
     vertical-align: middle;
-
     width: 100%;
 
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.2;
+    color: $color-nobel;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+
+    backface-visibility: hidden;
+    transition: transform $trans-default;
     transform: translate3d(0, -50%, 0);
   }
 
   input,
   textarea {
     flex-grow: 1;
-    min-height: 40px;
-    padding: 10px 10px 10px 0;
+    width: 100%;
+    padding: 18px 10px 9px 0;
     border: none;
-    border-bottom: 1px solid $color-nobel;
     outline: none;
 
-    transition: border $trans-default;
+    transition: border $trans-default, font-size $trans-default;
 
     &:hover {
       //border: 2px solid rgba($color-default-black, 0.5);
@@ -35,6 +49,17 @@
     &:focus {
       //border: 2px solid rgba($color-default-black, 0.8);
     }
+  }
+
+  &.is-filled {
+    label {
+      transform: scale(0.9) translate3d(-30px, -120%, 0);
+    }
+  }
+
+  input:focus + label,
+  textarea:focus + label {
+    transform: scale(0.9) translate3d(-30px, -120%, 0);
   }
 
   &__error {
