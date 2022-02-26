@@ -11,12 +11,19 @@
   font-size: 20px;
   line-height: 1.15;
   text-align: center;
-  background-color: transparent;
+  color: $color-default-black;
+  background-color: $color-default-white;
   border: 1px solid $color-default-black;
   outline: none;
+  transition: color $trans-default, background-color $trans-default;
   user-select: none;
   cursor: pointer;
 
-
-  margin-top: 25px;
+  @media (hover: hover), screen and (min-width: 0\0) {
+    &:hover,
+    &:focus {
+      color: $color-default-white;
+      background-color: $color-default-black;
+    }
+  }
 }

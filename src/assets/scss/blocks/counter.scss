@@ -37,7 +37,7 @@
     &:hover,
     &:focus {
       svg {
-        opacity: 0.8;
+        color: $color-nobel;
       }
     }
 
@@ -60,7 +60,7 @@
     display: block;
     width: 16px;
     height: 16px;
-    transition: transform $trans-default, opacity $trans-default;
+    transition: transform $trans-default, color $trans-default;
     transform: translate3d(0, 0, 0);
   }
 }

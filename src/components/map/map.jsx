@@ -6,6 +6,15 @@ import {getCoords, getMarkerFlag} from '../../store/selectors';
 import {changeMarkerFlag, setCoords} from '../../store/action';
 import {KEY, defaultMapOption} from '../../const';
 
+function Total({value}) {
+  return (
+    <div className="total">
+      <span>Итог:</span>
+      <span>{value} руб.</span>
+    </div>
+  );
+}
+
 /*eslint-disable-next-line*/
 function Marker({text}) {
   return (
@@ -53,7 +62,7 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
   };
 
   return (
-    <div style={{height: '50vh', width: '100%'}}>
+    <div className="map">
       <GoogleMapReact
         bootstrapURLKeys={{key: KEY}}
         zoom={defaultMapOption.zoom}
@@ -62,6 +71,8 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
       >
         {isMarkerShown && <Marker lat={coords.lat} lng={coords.lng} text/>}
       </GoogleMapReact>
+
+      <Total value={3790}/>
     </div>
   );
 }

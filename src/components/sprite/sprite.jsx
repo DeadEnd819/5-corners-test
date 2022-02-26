@@ -33,10 +33,10 @@ function Sprite() {
           />
         </symbol>
         <symbol id="icon-minus" viewBox="0 0 16 2">
-          <path stroke="#000" strokeWidth="2" d="M0 1h16"/>
+          <path stroke="currentColor" strokeWidth="2" d="M0 1h16"/>
         </symbol>
         <symbol id="icon-plus" viewBox="0 0 16 16">
-          <path stroke="#000" strokeWidth="2" d="M0 8h16M8 16V0"/>
+          <path stroke="currentColor" strokeWidth="2" d="M0 8h16M8 16V0"/>
         </symbol>
         <symbol id="icon-profile" viewBox="0 0 24 27">
           <path
