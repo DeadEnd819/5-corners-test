@@ -80,4 +80,18 @@
       font-size: 12px;
     }
   }
+
+  .custom-select__menu {
+    top: 37px;
+    padding: 0;
+    background-color: $color-default-white;
+    border: 1px solid $color-nobel;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    box-shadow: none;
+
+    & > div {
+      padding: 0;
+    }
+  }
 }

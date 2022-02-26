@@ -33,3 +33,19 @@
     fill: transparent;
   }
 }
+
+.search__input {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid $color-nobel;
+
+  input {
+    flex-grow: 1;
+    width: 100%;
+    padding: 18px 10px 6px 0;
+    font-size: 18px;
+    line-height: 1.16;
+    border: none;
+    outline: none;
+  }
+}

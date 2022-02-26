@@ -1,0 +1,7 @@
+.logo {
+  position: absolute;
+  left: 50%;
+  flex-shrink: 0;
+  color: $color-default-white;
+  transform: translate3d(-50%, 68px, 0);
+}

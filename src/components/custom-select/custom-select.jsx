@@ -14,7 +14,7 @@ function CustomDropdownIndicator(props) {
   );
 }
 
-function CustomValueContainer({ children, ...props }) {
+function CustomValueContainer({children, ...props}) {
   return (
     <ValueContainer {...props}>
       <Placeholder {...props} isFocused={props.isFocused}>

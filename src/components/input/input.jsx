@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {Field, useField, ErrorMessage} from 'formik';
 import MaskedInput from 'react-text-mask';
 
-const phoneNumberMask = ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
+const phoneNumberMask = ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 
 function Input({fields, id, type, label, modifier, errors, touched, onChange, onBlur, ...props}) {
   /*eslint-disable-next-line*/

@@ -51,11 +51,11 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
           {setSubmitting}
         ) => {
           setTimeout(() => {
-            // const ValuesData = JSON.stringify(values, null, 2);
+            const valuesData = JSON.stringify(values, null, 2);
             /*eslint-disable-next-line*/
-            console.log(JSON.stringify(values, null, 2));
+            console.log(valuesData);
             /*eslint-disable-next-line*/
-            alert(JSON.stringify(values, null, 2));
+            alert(valuesData);
             setSubmitting(false);
           }, 500);
         }}
