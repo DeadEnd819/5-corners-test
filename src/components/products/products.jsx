@@ -49,7 +49,7 @@ function ProductCard({amount, img, name, price, type}) {
 function Products({productsList}) {
   return (
     <div className="products">
-      <p className="products__title">Выбрать товары</p>
+      <p className="products__title">Выбранные товары:</p>
 
       <ul className="products__list">
         {productsList.map((product) => {

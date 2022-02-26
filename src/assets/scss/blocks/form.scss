@@ -2,6 +2,12 @@
 
 }
 
+.form__grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
 .form__submit {
   display: inline-block;
   vertical-align: middle;

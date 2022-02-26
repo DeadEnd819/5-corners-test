@@ -6,7 +6,7 @@ import MaskedInput from 'react-text-mask';
 
 const phoneNumberMask = ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
 
-function Input({fields, id, type, label, onChange, onBlur, ...props}) {
+function Input({fields, id, type, label, modifier, onChange, onBlur, ...props}) {
   /*eslint-disable-next-line*/
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
@@ -14,13 +14,14 @@ function Input({fields, id, type, label, onChange, onBlur, ...props}) {
   const value = fields[field.name];
   const error = meta.error;
   const isFilled = !!value;
+  const className = `input${error ? ' s-invalid' : ''}${isFilled ? ' is-filled' : ''} ${modifier}`;
 
   useEffect(() => {
     setValue(value);
   }, [value]);
 
   return (
-    <div className={`input${error ? ' s-invalid' : ''}${isFilled ? ' is-filled' : ''}`}>
+    <div className={className}>
       {field.name === 'phone' ?
         <MaskedInput
           mask={phoneNumberMask}

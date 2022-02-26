@@ -17,30 +17,35 @@ export const formInputs = [
     id: 'address',
     label: 'Адрес',
     name: 'address',
+    modifier: '',
   },
   {
     type: 'text',
     id: 'name',
     label: 'Ваше Имя',
     name: 'name',
+    modifier: 'input--size-small',
   },
   {
     type: 'text',
     id: 'phone',
     label: 'Ваш Телефон',
     name: 'phone',
+    modifier: 'input--size-small',
   },
   {
     type: 'email',
     id: 'email',
     label: 'Ваш Email',
     name: 'email',
+    modifier: '',
   },
   {
     type: 'select',
     id: 'package',
-    label: 'Тип Упаковки',
+    label: 'Тип упаковки',
     name: 'package',
+    modifier: '',
     options: [
       {value: 'no', label: 'без упаковки'},
       {value: 'standard', label: 'стандартная'},
@@ -52,6 +57,7 @@ export const formInputs = [
     id: 'comment',
     label: 'Введите комментарий',
     name: 'comment',
+    modifier: '',
   },
 ];
 

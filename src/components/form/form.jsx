@@ -65,23 +65,15 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
               {formInputs.map((input) => (
                 !input.options ?
                   <Input
+                    {...input}
                     key={input.name + input.id}
-                    type={input.type}
-                    id={input.id}
-                    label={input.label}
-                    name={input.name}
-                    options={input.options}
                     onChange={handleInputChange}
                     onBlur={handleAddressBlur}
                   />
                   :
                   <CustomSelect
+                    {...input}
                     key={input.name + input.id}
-                    type={input.type}
-                    id={input.id}
-                    label={input.label}
-                    name={input.name}
-                    options={input.options}
                     onChange={handleInputChange}
                   />
               ))}

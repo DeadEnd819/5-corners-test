@@ -14,7 +14,7 @@
 
   label {
     position: absolute;
-    top: 50%;
+    top: 18px;
     left: 0;
 
     display: inline-block;
@@ -28,8 +28,8 @@
     font-feature-settings: 'tnum' on, 'lnum' on;
 
     backface-visibility: hidden;
-    transition: transform $trans-default;
-    transform: translate3d(0, -50%, 0);
+    transition: all $trans-default;
+    //transform: translate3d(0, -50%, 0);
     user-select: none;
   }
 
@@ -40,7 +40,6 @@
     padding: 18px 10px 9px 0;
     border: none;
     outline: none;
-
     transition: border $trans-default, font-size $trans-default;
 
     &:hover {
@@ -54,13 +53,17 @@
 
   &.is-filled {
     label {
-      transform: scale(0.9) translate3d(-30px, -120%, 0);
+      top: 0;
+      font-size: 12px;
+      //transform: scale(0.9) translate3d(-30px, -120%, 0);
     }
   }
 
   input:focus + label,
   textarea:focus + label {
-    transform: scale(0.9) translate3d(-30px, -120%, 0);
+    top: 0;
+    font-size: 12px;
+    //transform: scale(0.9) translate3d(-30px, -120%, 0);
   }
 
   &__error {
@@ -90,16 +93,9 @@
     }
   }
 
-  /*&.is-valid {
-    input {
-      border: 2px solid $color-malachite;
-
-      &:focus,
-      &:hover {
-        border: 2px solid rgba($color-malachite, 0.5);
-      }
-    }
-  }*/
+  &--size-small {
+    width: 46.5%;
+  }
 }
 
 .input__error,

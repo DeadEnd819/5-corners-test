@@ -7,10 +7,14 @@
 
 .search__button {
   display: block;
+  align-self: flex-end;
+  margin-right: 20px;
+  padding: 0;
   background-color: transparent;
   border: none;
   outline: none;
   color: $color-default-black;
+  cursor: pointer;
 
   svg {
     display: block;
