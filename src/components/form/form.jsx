@@ -8,6 +8,7 @@ import {connect} from 'react-redux';
 import {getForm} from '../../store/selectors';
 import {changeFormData, changeMarkerFlag} from '../../store/action';
 import {formInputs} from '../../const';
+import Products from '../products/products';
 
 const schema = Yup.object().shape({
   address: Yup.string().required('Ошибка ввода'),
@@ -86,7 +87,9 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
               ))}
             </div>
 
-            <button type="submit">Submit</button>
+            <Products />
+
+            <button className="form__submit" type="submit">Купить</button>
           </FormikForm>
         )}
       </Formik>

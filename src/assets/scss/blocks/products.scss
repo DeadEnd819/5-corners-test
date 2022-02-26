@@ -1,0 +1,30 @@
+.products {
+  padding-top: 70px;
+}
+
+.products__title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.15;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+}
+
+.products__list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.products__item {
+  padding: 25px 0;
+  border-bottom: 1px solid $color-gainsboro;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

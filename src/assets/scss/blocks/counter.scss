@@ -1,0 +1,66 @@
+.counter {
+  position: relative;
+  display: flex;
+  width: 114px;
+  height: 40px;
+  border: 1px solid $color-default-black;
+
+  input {
+    width: 100%;
+    padding: 8px 32px;
+    border: none;
+    outline: none;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.15;
+    text-align: center;
+    font-feature-settings: 'tnum' on, 'lnum' on;
+  }
+}
+
+.counter__button {
+  position: absolute;
+  top: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  transform: translate3d(0, -50%, 0);
+  cursor: pointer;
+
+  @media (hover: hover), screen and (min-width: 0\0) {
+    &:hover,
+    &:focus {
+      svg {
+        opacity: 0.8;
+      }
+    }
+
+    &:active {
+      svg {
+        transform: translate3d(0, 0, 0) scale(0.8);
+      }
+    }
+  }
+
+  &--side-left {
+    left: 0;
+  }
+
+  &--side-right {
+    right: 0;
+  }
+
+  svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    transition: transform $trans-default, opacity $trans-default;
+    transform: translate3d(0, 0, 0);
+  }
+}

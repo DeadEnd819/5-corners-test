@@ -22,6 +22,14 @@
     color: $color-nobel;
     text-transform: uppercase;
     font-feature-settings: 'tnum' on, 'lnum' on;
+    transition: color $trans-default;
+
+    @media (hover: hover), screen and (min-width: 0\0) {
+      &:hover,
+      &:focus {
+        color: $color-default-black;
+      }
+    }
 
     &.is-active {
       opacity: 0.6;

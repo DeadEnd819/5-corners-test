@@ -49,7 +49,7 @@ function Sprite() {
         </symbol>
         <symbol id="icon-search" viewBox="0 0 27 27">
           <path
-            stroke="#000"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"

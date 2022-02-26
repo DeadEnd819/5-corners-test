@@ -7,7 +7,7 @@ function Header () {
         <div className="header__wrapper">
           <div className="search">
             <form action="#">
-              <button className="button">
+              <button className="search__button button">
                 <svg width="25" height="25" aria-hidden="true">
                   <use xlinkHref="#icon-search" />
                 </svg>
@@ -22,6 +22,7 @@ function Header () {
           <div className="user">
             <ul className="user__list">
               <li className="user__item">
+                {/*eslint-disable-next-line*/}
                 <a className="user__link" href="#" aria-label="Кабинет">
                   <svg width="22" height="22" aria-hidden="true">
                     <use xlinkHref="#icon-profile" />
@@ -29,6 +30,7 @@ function Header () {
                 </a>
               </li>
               <li className="user__item">
+                {/*eslint-disable-next-line*/}
                 <a className="user__link" href="#" aria-label="Избранное">
                   <svg width="22" height="22" aria-hidden="true">
                     <use xlinkHref="#icon-heart" />
@@ -36,6 +38,7 @@ function Header () {
                 </a>
               </li>
               <li className="user__item">
+                {/*eslint-disable-next-line*/}
                 <a className="user__link" href="#" aria-label="Корзина">
                   <svg width="22" height="22" aria-hidden="true">
                     <use xlinkHref="#icon-basket" />

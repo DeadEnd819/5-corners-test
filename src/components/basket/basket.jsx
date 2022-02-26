@@ -17,9 +17,12 @@ function Basket() {
           </div>
 
           <Form />
+
         </div>
         <div className="basket__col">
+
           <Map />
+
         </div>
       </div>
     </section>

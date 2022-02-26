@@ -1,3 +1,22 @@
 .form {
 
 }
+
+.form__submit {
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  padding: 24px 0 23px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid $color-default-black;
+  outline: none;
+  user-select: none;
+  cursor: pointer;
+
+
+  margin-top: 25px;
+}

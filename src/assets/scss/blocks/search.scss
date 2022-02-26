@@ -4,3 +4,18 @@
     align-items: center;
   }
 }
+
+.search__button {
+  display: block;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: $color-default-black;
+
+  svg {
+    display: block;
+    width: 25px;
+    height: 25px;
+    fill: transparent;
+  }
+}
