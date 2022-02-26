@@ -10,10 +10,12 @@ import {changeFormData, changeMarkerFlag} from '../../store/action';
 import {formInputs} from '../../const';
 import Products from '../products/products';
 
+const REG_EXP = '^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$';
+
 const schema = Yup.object().shape({
   address: Yup.string().required('Ошибка ввода'),
   name: Yup.string().required('Ошибка ввода'),
-  phone: Yup.string().required('Ошибка ввода'),
+  phone: Yup.string().matches(REG_EXP, 'Неправильный формат номера').required('Ошибка ввода'),
   email: Yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
   package: Yup.string().required('Ошибка ввода'),
   comment: Yup.string(),
@@ -58,7 +60,7 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
           }, 500);
         }}
       >
-        {({ isSubmitting }) => (
+        {({ isSubmitting, errors, touched }) => (
           <FormikForm>
 
             <div className="form__grid">
@@ -67,6 +69,8 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
                   <Input
                     {...input}
                     key={input.name + input.id}
+                    errors={errors}
+                    touched={touched}
                     onChange={handleInputChange}
                     onBlur={handleAddressBlur}
                   />
@@ -74,6 +78,8 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
                   <CustomSelect
                     {...input}
                     key={input.name + input.id}
+                    errors={errors}
+                    touched={touched}
                     onChange={handleInputChange}
                   />
               ))}
@@ -81,7 +87,7 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
 
             <Products />
 
-            <button className="form__submit" type="submit">Купить</button>
+            <button className="form__submit" type="submit" disabled={isSubmitting}>Купить</button>
           </FormikForm>
         )}
       </Formik>

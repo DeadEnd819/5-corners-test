@@ -27,13 +27,14 @@ function CustomValueContainer({ children, ...props }) {
   );
 }
 
-function CustomSelect({onChange, ...props}) {
+function CustomSelect({onChange, errors, touched, ...props}) {
   /*eslint-disable-next-line*/
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
+  const error = touched[field.name] && errors[field.name];
 
   return (
-    <div className={`input${meta.error ? ' s-invalid' : ''}`}>
+    <div className={`input${error ? ' is-invalid' : ''}`}>
       <Select
         className="custom-select"
         classNamePrefix="custom-select"
@@ -43,7 +44,7 @@ function CustomSelect({onChange, ...props}) {
         }}
         id={props.id}
         name={field.name}
-        placeholder={meta.error ? meta.error : props.label}
+        placeholder={error ? errors[field.name] : props.label}
         defaultValue={null}
         onChange={(option) => {
           setValue(option.value);

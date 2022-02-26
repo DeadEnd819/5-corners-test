@@ -51,14 +51,16 @@
   }
 
   &__error {
-    color: $color-torch-red;
+    color: $color-free-speech-red;
   }
 
   &.is-invalid {
-    border-color: $color-torch-red;
+    border-color: $color-free-speech-red;
 
+    input,
+    .custom-select__input-container,
     .custom-select__placeholder {
-      color: $color-torch-red;
+      color: $color-free-speech-red
     }
   }
 
