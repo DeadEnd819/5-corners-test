@@ -33,7 +33,7 @@ function CustomSelect({onChange, ...props}) {
   const {setValue} = helpers;
 
   return (
-    <div className="input">
+    <div className={`input${meta.error ? ' s-invalid' : ''}`}>
       <Select
         className="custom-select"
         classNamePrefix="custom-select"
@@ -43,7 +43,7 @@ function CustomSelect({onChange, ...props}) {
         }}
         id={props.id}
         name={field.name}
-        placeholder={props.label}
+        placeholder={meta.error ? meta.error : props.label}
         defaultValue={null}
         onChange={(option) => {
           setValue(option.value);

@@ -9,14 +9,14 @@ function Sprite() {
         </symbol>
         <symbol id="icon-basket" viewBox="0 0 25 27">
           <path
-            stroke="#000"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
             d="M4.83 1 1 6v17.5c0 .66.27 1.3.75 1.77s1.13.73 1.8.73h17.9c.67 0 1.32-.26 1.8-.73s.75-1.1.75-1.77V6l-3.83-5H4.83ZM1 6h23"
           />
           <path
-            stroke="#000"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
@@ -25,7 +25,7 @@ function Sprite() {
         </symbol>
         <symbol id="icon-heart" viewBox="0 0 30 27">
           <path
-            stroke="#000"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"
@@ -40,7 +40,7 @@ function Sprite() {
         </symbol>
         <symbol id="icon-profile" viewBox="0 0 24 27">
           <path
-            stroke="#000"
+            stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth="2"

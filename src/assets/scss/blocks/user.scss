@@ -16,7 +16,24 @@
 .user__item {
   margin-right: 22px;
 
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.user__link {
+  color: $color-default-black;
+  transition: color $trans-default;
+
+  @media (hover: hover), screen and (min-width: 0\0) {
+    &:hover,
+    &:focus {
+      color: $color-nobel;
+    }
+  }
+
   svg {
+    display: block;
     width: 28px;
     height: 28px;
 

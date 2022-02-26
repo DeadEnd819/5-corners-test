@@ -1,11 +1,9 @@
 .input,
 .textarea {
   position: relative;
-
   width: 100%;
   margin-bottom: 20px;
   padding: 0;
-
   border-bottom: 1px solid $color-nobel;
 
   &:last-child {
@@ -16,20 +14,16 @@
     position: absolute;
     top: 18px;
     left: 0;
-
     display: inline-block;
     vertical-align: middle;
     width: 100%;
-
     font-weight: 400;
     font-size: 16px;
     line-height: 1.2;
     color: $color-nobel;
     font-feature-settings: 'tnum' on, 'lnum' on;
-
     backface-visibility: hidden;
     transition: all $trans-default;
-    //transform: translate3d(0, -50%, 0);
     user-select: none;
   }
 
@@ -41,21 +35,12 @@
     border: none;
     outline: none;
     transition: border $trans-default, font-size $trans-default;
-
-    &:hover {
-      //border: 2px solid rgba($color-default-black, 0.5);
-    }
-
-    &:focus {
-      //border: 2px solid rgba($color-default-black, 0.8);
-    }
   }
 
   &.is-filled {
     label {
       top: 0;
       font-size: 12px;
-      //transform: scale(0.9) translate3d(-30px, -120%, 0);
     }
   }
 
@@ -63,33 +48,17 @@
   textarea:focus + label {
     top: 0;
     font-size: 12px;
-    //transform: scale(0.9) translate3d(-30px, -120%, 0);
   }
 
   &__error {
-    //position: absolute;
-    //right: 0;
-    //bottom: -5px;
-
     color: $color-torch-red;
-
-    //opacity: 0;
-
-    //transition: opacity $trans-default;
   }
 
   &.is-invalid {
-    input {
-      border: 2px solid $color-torch-red;
+    border-color: $color-torch-red;
 
-      &:focus,
-      &:hover {
-        border: 2px solid rgba($color-torch-red, 0.5);
-      }
-    }
-
-    .input__error {
-      opacity: 1;
+    .custom-select__placeholder {
+      color: $color-torch-red;
     }
   }
 
