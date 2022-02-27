@@ -2,6 +2,33 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {getDate} from '../../store/selectors';
 
+const DATA_MOCK = [
+  {
+    id: '901',
+    name: 'Товар 1',
+    type: 'Описание товара, которое может быть длинным',
+    img: 'https://via.placeholder.com/150',
+    price: 1090,
+    amount: 1
+  },
+  {
+    id: '902',
+    name: 'Товар 2',
+    type: 'Описание товара, которое может быть очень-очень длинным',
+    img: 'https://via.placeholder.com/150',
+    price: 700,
+    amount: 1
+  },
+  {
+    id: '903',
+    name: 'Товар 3',
+    type: 'Короткое описание товара',
+    img: 'https://via.placeholder.com/150',
+    price: 1000,
+    amount: 2
+  },
+];
+
 function Counter({value}) {
   return (
     <div className="counter">
@@ -31,7 +58,7 @@ function ProductCard({amount, img, name, price, type}) {
       </div>
 
       <div className="product-card__info">
-        <p className="product__name">{name}</p>
+        <p className="product-card__name">{name}</p>
         <p className="product-card__description">{type}</p>
 
         <Counter value={amount} />

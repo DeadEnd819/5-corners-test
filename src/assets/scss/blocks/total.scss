@@ -14,4 +14,12 @@
   font-feature-settings: 'tnum' on, 'lnum' on;
   background-color: rgba($color-default-black, 0.8);
   user-select: none;
+
+  @include vp-1023 {
+    position: static;
+    padding: 24px 0;
+    font-size: 26px;
+    color: $color-default-black;
+    background-color: $color-default-white;
+  }
 }

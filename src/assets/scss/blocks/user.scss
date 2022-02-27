@@ -16,6 +16,10 @@
 .user__item {
   margin-right: 22px;
 
+  @include vp-1023 {
+    margin-right: 12px;
+  }
+
   &:last-child {
     margin-right: 0;
   }
@@ -39,5 +43,6 @@
 
     fill: transparent;
     transform: translate3d(0, 0, 0);
+    pointer-events: none;
   }
 }

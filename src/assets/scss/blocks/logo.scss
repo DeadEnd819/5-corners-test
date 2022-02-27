@@ -4,4 +4,18 @@
   flex-shrink: 0;
   color: $color-default-white;
   transform: translate3d(-50%, 68px, 0);
+
+  @include vp-1023 {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  img {
+    width: 160px;
+    height: 50px;
+
+    @include vp-1023 {
+      width: 77px;
+      height: 24px;
+    }
+  }
 }

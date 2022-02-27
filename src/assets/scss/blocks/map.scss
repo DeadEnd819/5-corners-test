@@ -3,4 +3,9 @@
   width: 100%;
   height: 700px;
   overflow: hidden;
+
+  @include vp-1023 {
+    height: 63vw;
+    margin-bottom: 22px;
+  }
 }

@@ -4,16 +4,9 @@ import {connect} from 'react-redux';
 import {fetchAddress} from '../../store/api-actions';
 import {getCoords, getMarkerFlag} from '../../store/selectors';
 import {changeMarkerFlag, setCoords} from '../../store/action';
+import Total from '../total/total';
 import {KEY, defaultMapOption} from '../../const';
-
-function Total({value}) {
-  return (
-    <div className="total">
-      <span>Итог:</span>
-      <span>{value} руб.</span>
-    </div>
-  );
-}
+import MediaQuery from 'react-responsive';
 
 /*eslint-disable-next-line*/
 function Marker({text}) {
@@ -72,7 +65,7 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
         {isMarkerShown && <Marker lat={coords.lat} lng={coords.lng} text/>}
       </GoogleMapReact>
 
-      <Total value={3790}/>
+      <MediaQuery minWidth={1024}> <Total value={3790}/> </MediaQuery>
     </div>
   );
 }

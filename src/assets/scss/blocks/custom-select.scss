@@ -17,6 +17,11 @@
     color: $color-default-black;
     transition: transform $trans-default;
 
+    @include vp-1023 {
+      margin-top: 16px;
+      margin-right: 2px;
+    }
+
     &:hover,
     &:focus {
       color: $color-default-black;
@@ -55,6 +60,10 @@
     backface-visibility: hidden;
     transition: all $trans-default;
     transform: translate3d(0, -50%, 0);
+
+    @include vp-1023 {
+      top: 22px;
+    }
   }
 
   .custom-select__single-value {

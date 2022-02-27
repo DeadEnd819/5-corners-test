@@ -3,19 +3,21 @@ import {Formik, Form as FormikForm} from 'formik';
 import * as Yup from 'yup';
 import Input from '../input/input';
 import CustomSelect from '../custom-select/custom-select';
+import Total from '../total/total';
 import {fetchCoords} from '../../store/api-actions';
 import {connect} from 'react-redux';
 import {getForm} from '../../store/selectors';
 import {changeFormData, changeMarkerFlag} from '../../store/action';
 import {formInputs} from '../../const';
 import Products from '../products/products';
+import MediaQuery from 'react-responsive';
 
 const REG_EXP = '^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$';
 
 const schema = Yup.object().shape({
   address: Yup.string().required('Ошибка ввода'),
   name: Yup.string().required('Ошибка ввода'),
-  phone: Yup.string().matches(REG_EXP, 'Неправильный формат номера').required('Ошибка ввода'),
+  phone: Yup.string().matches(REG_EXP, 'Неправильный формат').required('Ошибка ввода'),
   email: Yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
   package: Yup.string().required('Ошибка ввода'),
   comment: Yup.string(),
@@ -86,6 +88,8 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
             </div>
 
             <Products />
+
+            <MediaQuery maxWidth={1023}> <Total value={3790}/> </MediaQuery>
 
             <button className="form__submit" type="submit" disabled={isSubmitting}>Купить</button>
           </FormikForm>

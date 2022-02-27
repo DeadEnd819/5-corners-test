@@ -23,6 +23,11 @@ function Sprite() {
             d="M17.61 11c0 1.33-.54 2.6-1.5 3.54a5.17 5.17 0 0 1-7.22 0A4.95 4.95 0 0 1 7.39 11"
           />
         </symbol>
+        <symbol id="icon-close" viewBox="0 0 50 50">
+          <path
+            d="M7.7188 6.2813 6.2813 7.7188 23.5624 25 6.2812 42.2813l1.4375 1.4374L25 26.4376l17.2813 17.2813 1.4374-1.4376L26.4376 25 43.7188 7.7187l-1.4376-1.4375L25 23.5626Z"
+          />
+        </symbol>
         <symbol id="icon-heart" viewBox="0 0 30 27">
           <path
             stroke="currentColor"
@@ -31,6 +36,9 @@ function Sprite() {
             strokeWidth="2"
             d="M26.84 3.21A7.36 7.36 0 0 0 21.63 1a7.22 7.22 0 0 0-5.21 2.21L15 4.66l-1.42-1.45a7.28 7.28 0 0 0-10.42 0 7.64 7.64 0 0 0 0 10.67l1.42 1.45L15 26l10.42-10.67 1.42-1.45A7.56 7.56 0 0 0 29 8.54a7.7 7.7 0 0 0-2.16-5.33v0Z"
           />
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 28 22">
+          <path stroke="currentColor" strokeWidth="2" d="M0 1h28M0 11h28M0 21h28"/>
         </symbol>
         <symbol id="icon-minus" viewBox="0 0 16 2">
           <path stroke="currentColor" strokeWidth="2" d="M0 1h16"/>

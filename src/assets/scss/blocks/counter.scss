@@ -3,7 +3,13 @@
   display: flex;
   width: 114px;
   height: 40px;
+  margin-top: auto;
   border: 1px solid $color-default-black;
+
+  @include vp-1023 {
+    width: 81px;
+    height: 34px;
+  }
 
   input {
     width: 100%;
@@ -15,6 +21,11 @@
     line-height: 1.15;
     text-align: center;
     font-feature-settings: 'tnum' on, 'lnum' on;
+
+    @include vp-1023 {
+      padding: 9px 32px 6px;
+      font-size: 16px;
+    }
   }
 }
 
@@ -32,6 +43,11 @@
   outline: none;
   transform: translate3d(0, -50%, 0);
   cursor: pointer;
+
+  @include vp-1023 {
+    width: 27px;
+    height: 34px;
+  }
 
   @media (hover: hover), screen and (min-width: 0\0) {
     &:hover,
@@ -62,5 +78,10 @@
     height: 16px;
     transition: transform $trans-default, color $trans-default;
     transform: translate3d(0, 0, 0);
+
+    @include vp-1023 {
+      width: 12px;
+      height: 12px;
+    }
   }
 }

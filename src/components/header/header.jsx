@@ -1,7 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import MediaQuery, {useMediaQuery} from 'react-responsive';
+
+const userListMobile = [
+  {
+    name: 'menu',
+    href: '#',
+    label: 'Открыть меню',
+    icon: {
+      name: 'menu',
+      width: 25,
+      height: 25,
+    },
+  },
+  {
+    name: 'search',
+    href: '#',
+    label: 'Открыть поиск',
+    icon: {
+      name: 'search',
+      width: 25,
+      height: 25,
+    },
+  },
+];
 
 const userList = [
   {
+    name: 'account',
     href: '#',
     label: 'Кабинет',
     icon: {
@@ -11,6 +36,7 @@ const userList = [
     },
   },
   {
+    name: 'favorites',
     href: '#',
     label: 'Избранное',
     icon: {
@@ -21,7 +47,7 @@ const userList = [
   },
   {
     href: '#',
-    label: 'Корзина',
+    label: 'basket',
     icon: {
       name: 'basket',
       width: 25,
@@ -78,38 +104,37 @@ function Search() {
   );
 }
 
-function User() {
+function User({list, onClick}) {
+  const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
+
   return (
     <div className="user">
       <ul className="user__list">
-        {userList.map(({href, label, icon}) => (
-          <li className="user__item" key={label}>
-            {/*eslint-disable-next-line*/}
-            <a className="user__link" href={href} aria-label={label}>
-              <svg width={icon.width} height={icon.height} aria-hidden="true">
-                <use xlinkHref={`#icon-${icon.name}`} />
-              </svg>
-            </a>
-          </li>
+        {list.map(({href, label, icon, name}) => (
+          (name === 'account' && isMobile) ? null :
+            <li className="user__item" key={label}>
+              {/*eslint-disable-next-line*/}
+              <a
+                className="user__link"
+                href={href}
+                aria-label={label}
+                onClick={onClick}
+                data-name={name}
+              >
+                <svg width={icon.width} height={icon.height} aria-hidden="true">
+                  <use xlinkHref={`#icon-${icon.name}`} />
+                </svg>
+              </a>
+            </li>
         ))}
       </ul>
     </div>
   );
 }
 
-function MainNav() {
+function MainNav({style}) {
   return (
-    <nav className="main-nav">
-      <button
-        className="main-nav__toggle btn-reset"
-        type="button"
-        aria-label="Переключатель отображения меню"
-        aria-pressed="false"
-      >
-        <svg width="20" height="20" aria-hidden="true">
-          <use xlinkHref="#icon-burger" />
-        </svg>
-      </button>
+    <nav className={`main-nav ${style ? style : ''}`}>
 
       <div className="main-nav__wrapper">
         <ul className="main-nav__list">
@@ -121,6 +146,10 @@ function MainNav() {
           ))}
         </ul>
       </div>
+
+      <MediaQuery maxWidth={1023}>
+        <a href="#" aria-label="Войти в аккаунт" style={{marginTop: '50px'}}>Войти в аккаунт</a>
+      </MediaQuery>
     </nav>
   );
 }
@@ -134,18 +163,40 @@ function Logo () {
 }
 
 function Header () {
+  const [isMenuOpen, setMenuOpen] = useState(false);
+  const isMobile = useMediaQuery({query: '(max-width: 1023px)'});
+
+  useEffect(() => {
+    if (!isMobile) {
+      setMenuOpen(false);
+    }
+  }, [isMobile]);
+
+  const handleUserLinkClick = ({target}) => {
+    const name = target.dataset.name;
+
+    if (name === 'menu') {
+      setMenuOpen(!isMenuOpen);
+    }
+  };
+
   return (
     <header className="header">
       <div className="container header__grid">
         <Logo />
         <div className="header__wrapper">
+          <MediaQuery maxWidth={1023}>
+            <User list={userListMobile} onClick={handleUserLinkClick} />
+          </MediaQuery>
 
           <Search />
-          <User />
+          <User list={userList} />
 
         </div>
 
-        <MainNav />
+        <MainNav
+          style={(isMobile && isMenuOpen) && 'is-visible'}
+        />
 
       </div>
     </header>

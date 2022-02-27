@@ -1,11 +1,21 @@
 .product-card {
   display: flex;
   padding-right: 35px;
+
+  @include vp-1023 {
+    padding-right: 0;
+  }
 }
 
 .product-card__img {
+  flex-shrink: 0;
   width: 150px;
   height: 150px;
+
+  @include vp-1023 {
+    width: 80px;
+    height: 80px;
+  }
 
   img {
     width: 100%;
@@ -15,10 +25,17 @@
 }
 
 .product-card__info {
-  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  max-width: 150px;
   width: 100%;
   margin-left: 20px;
   margin-right: 20px;
+
+  @include vp-1023 {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
 }
 
 .product-card__wrapper {
@@ -26,26 +43,40 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-
+  text-align: end;
+  flex-shrink: 0;
   margin-left: auto;
 }
 
-.product__name,
+.product-card__name,
 .product-card__price {
   margin: 0;
-
   font-weight: 700;
   font-size: 20px;
   line-height: 1.15;
   font-feature-settings: 'tnum' on, 'lnum' on;
+
+  @include vp-1023 {
+    font-size: 16px;
+    line-height: 1.125;
+  }
+}
+
+.product-card__name {
+  margin-bottom: 12px;
 }
 
 .product-card__description {
+  margin: 0 0 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.2;
   color: $color-nobel;
   font-feature-settings: 'tnum' on, 'lnum' on;
+
+  @include vp-1023 {
+    display: none;
+  }
 }
 
 .product-card__delete {
@@ -58,6 +89,11 @@
   color: $color-nobel;
   text-decoration: underline;
   transition: color $trans-default;
+
+  @include vp-1023 {
+    font-size: 12px;
+    line-height: 1.16;
+  }
 
   @media (hover: hover), screen and (min-width: 0\0) {
     &:hover,

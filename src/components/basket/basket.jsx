@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from '../form/form';
 import Map from '../map/map';
+import MediaQuery from 'react-responsive';
 
 function Basket() {
   return (
@@ -19,11 +20,12 @@ function Basket() {
           <Form />
 
         </div>
-        <div className="basket__col">
 
-          <Map />
-
-        </div>
+        <MediaQuery minWidth={1024}>
+          <div className="basket__col">
+            <Map />
+          </div>
+        </MediaQuery>
       </div>
     </section>
   );
