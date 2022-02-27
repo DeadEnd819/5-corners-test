@@ -1,54 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import Counter from '../counter/counter';
 import {getDate} from '../../store/selectors';
-
-const DATA_MOCK = [
-  {
-    id: '901',
-    name: 'Товар 1',
-    type: 'Описание товара, которое может быть длинным',
-    img: 'https://via.placeholder.com/150',
-    price: 1090,
-    amount: 1
-  },
-  {
-    id: '902',
-    name: 'Товар 2',
-    type: 'Описание товара, которое может быть очень-очень длинным',
-    img: 'https://via.placeholder.com/150',
-    price: 700,
-    amount: 1
-  },
-  {
-    id: '903',
-    name: 'Товар 3',
-    type: 'Короткое описание товара',
-    img: 'https://via.placeholder.com/150',
-    price: 1000,
-    amount: 2
-  },
-];
-
-function Counter({value}) {
-  return (
-    <div className="counter">
-      <button className="counter__button counter__button--side-left">
-        <svg width="16" height="16">
-          <use xlinkHref="#icon-minus" />
-        </svg>
-      </button>
-
-      <label className="visually-hidden" htmlFor="counter-1">Счетчик товара</label>
-      <input id="counter-1" type="number" value={value} />
-
-      <button className="counter__button counter__button--side-right">
-        <svg width="16" height="16">
-          <use xlinkHref="#icon-plus" />
-        </svg>
-      </button>
-    </div>
-  );
-}
 
 function ProductCard({amount, img, name, price, type}) {
   return (

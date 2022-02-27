@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Total({value}) {
   return (
@@ -8,5 +9,9 @@ function Total({value}) {
     </div>
   );
 }
+
+Total.propTypes = {
+  value: PropTypes.number.isRequired,
+};
 
 export default Total;

@@ -1,27 +1,6 @@
 import React from 'react';
-
-const breadcrumbsList = [
-  {
-    href: '#',
-    title: 'Главная',
-    ariaLabel: 'Перейти на главную страницу',
-  },
-  {
-    href: '#',
-    title: 'Корзина',
-    ariaLabel: 'Перейти на страницу корзины',
-  },
-];
-
-function BreadcrumbsItem({link, hasLast}) {
-  return (
-    <li className="breadcrumbs__item">
-      {hasLast ?
-        <span className="breadcrumbs__link" aria-label={link.ariaLabel}>{link.title}</span> :
-        <a className="breadcrumbs__link" href={link.href} aria-label={link.ariaLabel}>{link.title}</a>}
-    </li>
-  );
-}
+import BreadcrumbsItem from '../breadcrumbs-item/breadcrumbs-item';
+import {breadcrumbsList} from '../../const';
 
 function Breadcrumbs() {
   return (

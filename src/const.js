@@ -68,3 +68,16 @@ export const defaultMapOption = {
   },
   zoom: 13,
 };
+
+export const breadcrumbsList = [
+  {
+    href: '#',
+    title: 'Главная',
+    ariaLabel: 'Перейти на главную страницу',
+  },
+  {
+    href: '#',
+    title: 'Корзина',
+    ariaLabel: 'Перейти на страницу корзины',
+  },
+];
