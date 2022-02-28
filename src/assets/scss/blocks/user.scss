@@ -1,13 +1,5 @@
-.user {
-
-}
-
 .user__list {
-  //display: grid;
-  //grid-template-columns: repeat(auto-fit, minmax(22px, 22px));
-  //gap: 22px;
   display: flex;
-
   margin: 0;
   padding: 0;
   list-style: none;
@@ -40,7 +32,6 @@
     display: block;
     width: 28px;
     height: 28px;
-
     fill: transparent;
     transform: translate3d(0, 0, 0);
     pointer-events: none;

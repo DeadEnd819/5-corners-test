@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Select, {components} from 'react-select';
 import {useField} from 'formik';
 
@@ -14,13 +15,16 @@ function CustomDropdownIndicator(props) {
   );
 }
 
+// eslint-disable-next-line react/prop-types
 function CustomValueContainer({children, ...props}) {
   return (
     <ValueContainer {...props}>
+      {/* eslint-disable-next-line react/prop-types */}
       <Placeholder {...props} isFocused={props.isFocused}>
+        {/* eslint-disable-next-line react/prop-types */}
         {props.selectProps.placeholder}
       </Placeholder>
-      {React.Children.map(children, child =>
+      {React.Children.map(children, (child) =>
         child && child.type !== Placeholder ? child : null
       )}
     </ValueContainer>
@@ -28,7 +32,7 @@ function CustomValueContainer({children, ...props}) {
 }
 
 function CustomSelect({onChange, errors, touched, ...props}) {
-  /*eslint-disable-next-line*/
+  // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
   const error = touched[field.name] && errors[field.name];
@@ -58,5 +62,24 @@ function CustomSelect({onChange, errors, touched, ...props}) {
     </div>
   );
 }
+
+CustomSelect.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  options: PropTypes.arrayOf(PropTypes.shape({
+    value: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+  })).isRequired,
+  errors: PropTypes.shape({
+    address: PropTypes.string,
+    comment: PropTypes.string,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    package: PropTypes.string,
+    phone: PropTypes.string,
+  }).isRequired,
+  touched: PropTypes.objectOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default CustomSelect;

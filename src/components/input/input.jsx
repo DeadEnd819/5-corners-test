@@ -3,13 +3,24 @@ import {getForm} from '../../store/selectors';
 import {connect} from 'react-redux';
 import {Field, useField, ErrorMessage} from 'formik';
 import MaskedInput from 'react-text-mask';
-import Map from '../map/map';
 import MediaQuery from 'react-responsive';
+import PropTypes from 'prop-types';
+import Map from '../map/map';
+import {PHONE_MASK} from '../../const';
 
-const phoneNumberMask = ['+', '7', ' ', '(', /\d/, /\d/, /\d/, ')', '-', /\d/, /\d/, /\d/, '-', /\d/, /\d/, '-', /\d/, /\d/];
-
-function Input({fields, id, type, label, modifier, errors, touched, onChange, onBlur, ...props}) {
-  /*eslint-disable-next-line*/
+function Input({
+  fields,
+  id,
+  type,
+  label,
+  modifier,
+  errors,
+  touched,
+  onChange,
+  onBlur,
+  ...props
+}) {
+  // eslint-disable-next-line no-unused-vars
   const [field, meta, helpers] = useField(props);
   const {setValue} = helpers;
 
@@ -27,7 +38,7 @@ function Input({fields, id, type, label, modifier, errors, touched, onChange, on
       <div className={className}>
         {field.name === 'phone' ?
           <MaskedInput
-            mask={phoneNumberMask}
+            mask={PHONE_MASK}
             type={type}
             id={id}
             name={field.name}
@@ -62,6 +73,33 @@ function Input({fields, id, type, label, modifier, errors, touched, onChange, on
     </>
   );
 }
+
+Input.propTypes = {
+  fields: PropTypes.shape({
+    address: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    package: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+  }).isRequired,
+  id: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  modifier: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  errors: PropTypes.shape({
+    address: PropTypes.string,
+    comment: PropTypes.string,
+    email: PropTypes.string,
+    name: PropTypes.string,
+    package: PropTypes.string,
+    phone: PropTypes.string,
+  }).isRequired,
+  touched: PropTypes.objectOf(PropTypes.string).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (store) => ({
   fields: getForm(store),

@@ -1,38 +1,16 @@
 import React, {useEffect} from 'react';
+import PropTypes from 'prop-types';
 import GoogleMapReact from 'google-map-react';
 import {connect} from 'react-redux';
+import MediaQuery from 'react-responsive';
+import Total from '../total/total';
+import Marker from '../marker/marker';
 import {fetchAddress} from '../../store/api-actions';
 import {getCoords, getMarkerFlag} from '../../store/selectors';
 import {changeMarkerFlag, setCoords} from '../../store/action';
-import Total from '../total/total';
 import {KEY, defaultMapOption} from '../../const';
-import MediaQuery from 'react-responsive';
 
-/*eslint-disable-next-line*/
-function Marker({text}) {
-  return (
-    <div style={{
-      position: 'absolute',
-      left: '-16px',
-      top: '-16px',
-      borderRadius: '50%',
-      width: '32px',
-      height: '32px',
-      backgroundColor: 'red',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      border: '1px solid blue',
-      color: 'yellow'
-    }}
-    >
-      {text}
-    </div>
-  );
-}
-
-
-function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
+function Map({coords, getAddress, isMarkerShown, setMarkerShown, addCoords}) {
   useEffect(() => {
     if (coords.lat === null || coords.lng === null) {
       return;
@@ -48,7 +26,7 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
   }, [coords.lat, coords.lng]);
 
   const handleMapClick = (evt) => {
-    setCoords({
+    addCoords({
       lat: evt.lat,
       lng: evt.lng
     });
@@ -70,6 +48,17 @@ function Map({coords, getAddress, isMarkerShown, setMarkerShown, setCoords}) {
   );
 }
 
+Map.propTypes = {
+  coords: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }).isRequired,
+  getAddress: PropTypes.func.isRequired,
+  isMarkerShown: PropTypes.bool.isRequired,
+  setMarkerShown: PropTypes.func.isRequired,
+  addCoords: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (store) => ({
   isMarkerShown: getMarkerFlag(store),
   coords: getCoords(store),
@@ -82,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
   setMarkerShown(flag) {
     dispatch(changeMarkerFlag(flag));
   },
-  setCoords(coords) {
+  addCoords(coords) {
     dispatch(setCoords(coords));
   },
 });

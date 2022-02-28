@@ -1,29 +1,29 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {Formik, Form as FormikForm} from 'formik';
-import * as Yup from 'yup';
+import MediaQuery from 'react-responsive';
+import * as yup from 'yup';
 import Input from '../input/input';
 import CustomSelect from '../custom-select/custom-select';
 import Total from '../total/total';
+import Products from '../products/products';
 import {fetchCoords} from '../../store/api-actions';
-import {connect} from 'react-redux';
 import {getForm} from '../../store/selectors';
 import {changeFormData, changeMarkerFlag} from '../../store/action';
-import {formInputs} from '../../const';
-import Products from '../products/products';
-import MediaQuery from 'react-responsive';
+import {formInputs, PHONE_REG_EXP} from '../../const';
 
-const REG_EXP = '^((8|\\+7)[\\- ]?)?(\\(?\\d{3}\\)?[\\- ]?)?[\\d\\- ]{7,10}$';
 
-const schema = Yup.object().shape({
-  address: Yup.string().required('Ошибка ввода'),
-  name: Yup.string().required('Ошибка ввода'),
-  phone: Yup.string().matches(REG_EXP, 'Неправильный формат').required('Ошибка ввода'),
-  email: Yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
-  package: Yup.string().required('Ошибка ввода'),
-  comment: Yup.string(),
+const schema = yup.object().shape({
+  address: yup.string().required('Ошибка ввода'),
+  name: yup.string().required('Ошибка ввода'),
+  phone: yup.string().matches(PHONE_REG_EXP, 'Неправильный формат').required('Ошибка ввода'),
+  email: yup.string().email('Введите корректный емейл').required('Ошибка ввода'),
+  package: yup.string().required('Ошибка ввода'),
+  comment: yup.string(),
 });
 
-function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
+function Form({fields, setForm, setMarkerFlag, getAddress}) {
   const handleInputChange = ({name, value}) => {
     setForm({[name]: value});
 
@@ -39,7 +39,7 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
         return;
       }
 
-      fetchCoords(fields[name]);
+      getAddress(fields[name]);
     }
   };
 
@@ -54,15 +54,19 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
         ) => {
           setTimeout(() => {
             const valuesData = JSON.stringify(values, null, 2);
-            /*eslint-disable-next-line*/
+            // eslint-disable-next-line no-console
             console.log(valuesData);
-            /*eslint-disable-next-line*/
+            // eslint-disable-next-line no-alert
             alert(valuesData);
             setSubmitting(false);
           }, 500);
         }}
       >
-        {({ isSubmitting, errors, touched }) => (
+        {({
+          isSubmitting,
+          errors,
+          touched
+        }) => (
           <FormikForm>
 
             <div className="form__grid">
@@ -99,6 +103,20 @@ function Form({fields, setForm, setMarkerFlag, fetchCoords}) {
   );
 }
 
+Form.propTypes = {
+  fields: PropTypes.shape({
+    address: PropTypes.string.isRequired,
+    comment: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    package: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+  }).isRequired,
+  setForm: PropTypes.func.isRequired,
+  setMarkerFlag: PropTypes.func.isRequired,
+  getAddress: PropTypes.func.isRequired,
+};
+
 const mapStateToProps = (store) => ({
   fields: getForm(store),
 });
@@ -112,9 +130,6 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setMarkerFlag(flag) {
     dispatch(changeMarkerFlag(flag));
-  },
-  fetchCoords(address) {
-    dispatch(fetchCoords(address));
   },
 });
 
