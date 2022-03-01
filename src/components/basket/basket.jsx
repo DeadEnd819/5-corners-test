@@ -1,10 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
+import MediaQuery from 'react-responsive';
 import Form from '../form/form';
 import Map from '../map/map';
-import MediaQuery from 'react-responsive';
 import {getData} from '../../store/selectors';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 
 function Basket({productsList}) {
   const isEmpty = !productsList.length;
