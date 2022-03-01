@@ -12,6 +12,13 @@ export const ActionType = {
   CHANGE_MARKER_FLAG: 'CHANGE_MARKER_FLAG',
   CHANGE_FORM_DATA: 'CHANGE_FORM_DATA',
   CLEAR_FORM_DATA: 'CLEAR_FORM_DATA',
+  DELETE_ITEM: 'DELETE_ITEM',
+};
+
+export const AmountUpdateType = {
+  INC: 'INC',
+  DEC: 'DEC',
+  ADD: 'ADD'
 };
 
 export const formInputs = [

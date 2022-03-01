@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import ProductCard from '../product-card/product-card';
-import {getDate} from '../../store/selectors';
+import {getData} from '../../store/selectors';
 
 function Products({productsList}) {
   return (
@@ -12,7 +12,7 @@ function Products({productsList}) {
       <ul className="products__list">
         {productsList.map((product) => (
           <li className="products__item" key={product.id}>
-            <ProductCard {...product} />
+            <ProductCard {...product} productsList={productsList} />
           </li>
         ))}
       </ul>
@@ -32,7 +32,7 @@ Products.propTypes = {
 };
 
 const mapStateToProps = (store) => ({
-  productsList: getDate(store),
+  productsList: getData(store),
 });
 
 export default connect(mapStateToProps)(Products);

@@ -5,12 +5,24 @@ const {
   LOAD_COORDS,
   CLEAR_FORM_DATA,
   CHANGE_FORM_DATA,
-  CHANGE_MARKER_FLAG
+  CHANGE_MARKER_FLAG,
+  CHANGE_DATA,
+  DELETE_ITEM,
 } = ActionType;
 
 export const setData = (date) => ({
   type: LOAD_DATA,
   payload: date,
+});
+
+export const changeData = (date) => ({
+  type: CHANGE_DATA,
+  payload: date,
+});
+
+export const removeItem = (item) => ({
+  type: DELETE_ITEM,
+  payload: item,
 });
 
 export const changeFormData = (data) => ({

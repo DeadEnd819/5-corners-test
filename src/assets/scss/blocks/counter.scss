@@ -23,7 +23,7 @@
     font-feature-settings: 'tnum' on, 'lnum' on;
 
     @include vp-1023 {
-      padding: 9px 32px 6px;
+      padding: 9px 28px 6px;
       font-size: 16px;
     }
   }
@@ -78,6 +78,7 @@
     height: 16px;
     transition: transform $trans-default, color $trans-default;
     transform: translate3d(0, 0, 0);
+    pointer-events: none;
 
     @include vp-1023 {
       width: 12px;

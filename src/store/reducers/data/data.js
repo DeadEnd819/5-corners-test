@@ -1,7 +1,7 @@
-import {extend} from '../../../utils';
+import {extend, removeItem} from '../../../utils';
 import {ActionType} from '../../../const';
 
-const {LOAD_DATA, CHANGE_DATA} = ActionType;
+const {LOAD_DATA, CHANGE_DATA, DELETE_ITEM} = ActionType;
 
 const initialState = {
   data: {},
@@ -17,6 +17,10 @@ const data = (state = initialState, action) => {
       return extend(state, {
         data: action.payload,
       });
+    case DELETE_ITEM:
+      return {
+        data: removeItem(state.data, action.payload)
+      };
   }
 
   return state;
