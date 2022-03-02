@@ -23,6 +23,6 @@ Thumbs.db
 mock.js
 
 # editors
-#.idea
+.idea
 *.sublime*
 .vscode
