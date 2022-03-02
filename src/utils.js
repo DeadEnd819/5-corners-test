@@ -53,3 +53,16 @@ export const getUpdatedAmount = (data, item, type, value = item.amount) => {
 export const getCurrentTotal = (data) => data
   .map(({price}) => price)
   .reduce((accumulator, value) => accumulator + value, 0);
+
+export const getCurrentProducts = (array) => {
+  const newArray = [];
+
+  for (const item of array) {
+    newArray.push({
+      id: item.id,
+      amount: item.amount
+    });
+  }
+
+  return newArray;
+};

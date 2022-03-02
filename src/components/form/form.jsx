@@ -9,7 +9,7 @@ import CustomSelect from '../custom-select/custom-select';
 import Total from '../total/total';
 import Products from '../products/products';
 import {fetchCoords} from '../../store/api-actions';
-import {getCoords, getForm} from '../../store/selectors';
+import {getCoords, getForm, getIdAndAmount} from '../../store/selectors';
 import {changeFormData, changeMarkerFlag} from '../../store/action';
 import {formInputs, PHONE_REG_EXP} from '../../const';
 
@@ -22,7 +22,7 @@ const schema = yup.object().shape({
   comment: yup.string(),
 });
 
-function Form({fields, coords, setForm, setMarkerFlag, getAddress}) {
+function Form({fields, coords, setForm, setMarkerFlag, getAddress, currentBasket}) {
   const handleInputChange = ({name, value}) => {
     setForm({[name]: value});
 
@@ -53,6 +53,7 @@ function Form({fields, coords, setForm, setMarkerFlag, getAddress}) {
         ) => {
           setTimeout(() => {
             values.coords = coords;
+            values.basket = currentBasket;
             const valuesData = JSON.stringify(values, null, 2);
             // eslint-disable-next-line no-console
             console.log(valuesData);
@@ -119,11 +120,16 @@ Form.propTypes = {
     lat: PropTypes.number,
     lng: PropTypes.number,
   }).isRequired,
+  currentBasket: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    amount: PropTypes.number.isRequired,
+  })).isRequired,
 };
 
 const mapStateToProps = (store) => ({
   fields: getForm(store),
   coords: getCoords(store),
+  currentBasket: getIdAndAmount(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
