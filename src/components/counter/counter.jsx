@@ -5,7 +5,8 @@ import {AmountUpdateType} from '../../const';
 function Counter({value, onChange}) {
   return (
     <div className="counter">
-      <span
+      <button
+        type="button"
         className="counter__button counter__button--side-left"
         data-name={AmountUpdateType.DEC}
         onClick={onChange}
@@ -13,7 +14,7 @@ function Counter({value, onChange}) {
         <svg width="16" height="16">
           <use xlinkHref="#icon-minus" />
         </svg>
-      </span>
+      </button>
 
       <label className="visually-hidden" htmlFor="counter-1">Счетчик товара</label>
       <input
@@ -24,7 +25,8 @@ function Counter({value, onChange}) {
         data-name={AmountUpdateType.ADD}
       />
 
-      <span
+      <button
+        type="button"
         className="counter__button counter__button--side-right"
         data-name={AmountUpdateType.INC}
         onClick={onChange}
@@ -32,7 +34,7 @@ function Counter({value, onChange}) {
         <svg width="16" height="16">
           <use xlinkHref="#icon-plus" />
         </svg>
-      </span>
+      </button>
     </div>
   );
 }

@@ -6,6 +6,7 @@
 }
 
 .user__item {
+  position: relative;
   margin-right: 22px;
 
   @include vp-1023 {
@@ -36,4 +37,19 @@
     transform: translate3d(0, 0, 0);
     pointer-events: none;
   }
+}
+
+.user__counter {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  display: block;
+  padding: 1px 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.16;
+  font-feature-settings: 'tnum' on, 'lnum' on;
+  color: $color-default-white;
+  background-color: $color-default-black;
+  border-radius: 50%;
 }

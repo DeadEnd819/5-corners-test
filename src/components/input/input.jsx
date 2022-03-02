@@ -96,7 +96,7 @@ Input.propTypes = {
     package: PropTypes.string,
     phone: PropTypes.string,
   }).isRequired,
-  touched: PropTypes.objectOf(PropTypes.string).isRequired,
+  touched: PropTypes.object,
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
 };

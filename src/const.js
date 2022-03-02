@@ -160,6 +160,7 @@ export const userList = [
       width: 25,
       height: 25,
     },
+    hasBasketCounter: true,
   },
 ];
 

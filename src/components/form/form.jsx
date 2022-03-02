@@ -9,10 +9,9 @@ import CustomSelect from '../custom-select/custom-select';
 import Total from '../total/total';
 import Products from '../products/products';
 import {fetchCoords} from '../../store/api-actions';
-import {getForm} from '../../store/selectors';
+import {getCoords, getForm} from '../../store/selectors';
 import {changeFormData, changeMarkerFlag} from '../../store/action';
 import {formInputs, PHONE_REG_EXP} from '../../const';
-
 
 const schema = yup.object().shape({
   address: yup.string().required('Ошибка ввода'),
@@ -23,7 +22,7 @@ const schema = yup.object().shape({
   comment: yup.string(),
 });
 
-function Form({fields, setForm, setMarkerFlag, getAddress}) {
+function Form({fields, coords, setForm, setMarkerFlag, getAddress}) {
   const handleInputChange = ({name, value}) => {
     setForm({[name]: value});
 
@@ -53,6 +52,7 @@ function Form({fields, setForm, setMarkerFlag, getAddress}) {
           {setSubmitting}
         ) => {
           setTimeout(() => {
+            values.coords = coords;
             const valuesData = JSON.stringify(values, null, 2);
             // eslint-disable-next-line no-console
             console.log(valuesData);
@@ -115,10 +115,15 @@ Form.propTypes = {
   setForm: PropTypes.func.isRequired,
   setMarkerFlag: PropTypes.func.isRequired,
   getAddress: PropTypes.func.isRequired,
+  coords: PropTypes.shape({
+    lat: PropTypes.number,
+    lng: PropTypes.number,
+  }).isRequired,
 };
 
 const mapStateToProps = (store) => ({
   fields: getForm(store),
+  coords: getCoords(store),
 });
 
 const mapDispatchToProps = (dispatch) => ({
